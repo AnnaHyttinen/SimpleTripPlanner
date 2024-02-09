@@ -36,11 +36,11 @@ template<typename T, size_t S>
 class Array {
 public:
     int Size() const { return S; }
-    char* operator[](size_t index) { return m_Data[index]; }
-    const char& operator[](size_t index) const { return m_Data[index]; }
-    char* Data() { return m_Data; }
+    T& operator[](size_t index) { return m_Data[index]; }
+    const T& operator[](size_t index) const { return m_Data[index]; }
+    T* Data() { return m_Data; }
 private:
-    char* m_Data[S];
+    T m_Data[S];
 };
 
 int main()

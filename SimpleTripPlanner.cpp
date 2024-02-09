@@ -12,12 +12,14 @@ public:
         m_Buffer = new char[m_Size + 1];
         memcpy(m_Buffer, string, m_Size);
         m_Buffer[m_Size] = 0;
+        cout << "Created! \n";
     }
 
     String(const String& other) = delete; //disable copying
 
     ~String() {
         delete[] m_Buffer;
+        cout << "\nDeleted. \n";
     }
 
     char& operator[](unsigned int index) {
@@ -40,23 +42,24 @@ public:
     const T& operator[](size_t index) const { return m_Data[index]; }
     T* Data() { return m_Data; }
 private:
-    T m_Data[S];
+    T m_Data[S]{};
 };
 
 int main()
 {
-    String toDo1 = "Swim in the ocean.";
+    Array <String*, 5> arr;
+    cout << arr.Size() << endl;
+
+    String toDo1 = "Swim with the dolphins.";
     cout << toDo1 << endl;
+    cout << &toDo1 << endl;
 
-    Array <char**, 5> arr;
-    cout << arr.Size();
-
-    //these do not work yet:
-    /*cout << arr[0];
+    arr[0] = &toDo1;
+    cout << arr[0];
 
     for (int i = 0; i < arr.Size(); i++) {
-        *arr[0] = 'Joo';
-        cout << arr[i] << endl;
-    }*/
+        //cout << *arr[i] << endl;
+        //can not be this way, because there are null pointers to be read
+    }
     return 0;
 }

@@ -58,8 +58,8 @@ int main()
     cout << arr[0];
 
     for (int i = 0; i < arr.Size(); i++) {
-        //cout << *arr[i] << endl;
-        //can not be this way, because there are null pointers to be read
+        if (arr[i] != nullptr)
+            cout << *arr[i] << endl;
     }
     return 0;
 }

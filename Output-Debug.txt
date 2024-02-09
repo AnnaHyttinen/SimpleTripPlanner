@@ -1,0 +1,14 @@
+﻿'SimpleTripPlanner.exe' (Win32): Loaded 'D:\Unityhommeleita\CppMaterials\Second Courses\SimpleTripPlanner\Debug\SimpleTripPlanner.exe'. Symbols loaded.
+'SimpleTripPlanner.exe' (Win32): Loaded 'C:\Windows\SysWOW64\ntdll.dll'. 
+'SimpleTripPlanner.exe' (Win32): Loaded 'C:\Windows\SysWOW64\kernel32.dll'. 
+'SimpleTripPlanner.exe' (Win32): Loaded 'C:\Windows\SysWOW64\KernelBase.dll'. 
+'SimpleTripPlanner.exe' (Win32): Loaded 'C:\Windows\SysWOW64\msvcp140d.dll'. 
+'SimpleTripPlanner.exe' (Win32): Loaded 'C:\Windows\SysWOW64\vcruntime140d.dll'. 
+'SimpleTripPlanner.exe' (Win32): Loaded 'C:\Windows\SysWOW64\ucrtbased.dll'. 
+The thread 0x651c has exited with code 0 (0x0).
+'SimpleTripPlanner.exe' (Win32): Loaded 'C:\Windows\SysWOW64\kernel.appcore.dll'. 
+'SimpleTripPlanner.exe' (Win32): Loaded 'C:\Windows\SysWOW64\msvcrt.dll'. 
+'SimpleTripPlanner.exe' (Win32): Loaded 'C:\Windows\SysWOW64\rpcrt4.dll'. 
+The thread 0x69d8 has exited with code 0 (0x0).
+The thread 0x69c4 has exited with code 0 (0x0).
+The program '[27624] SimpleTripPlanner.exe' has exited with code 0 (0x0).

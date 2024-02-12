@@ -58,8 +58,21 @@ int main()
     cout << toDo1 << endl;
     cout << &toDo1 << endl; //the String pointer
     
+    String toDo2 = "Run in the flower fields.";
+    String toDo3 = "Have a cake.";
+
+    LList<String*> toDoList1;
+    toDoList1.insertToEnd(&toDo1).insertToEnd(&toDo2).insertToEnd(&toDo3);
+    toDoList1.Print();
+
     String hotel1 = "Oceanside hotel";
     cout << hotel1 << endl;
     
     return 0;
 }
+
+
+
+
+
+

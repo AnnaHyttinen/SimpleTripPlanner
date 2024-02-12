@@ -21,7 +21,7 @@ public:
 	LList();
 	~LList();
 	LList<T>& insertToEnd(T content);
-	void Print(ostream& stream = cout) const;
+	void Print() const;
 };
 
 template<class T>
@@ -45,7 +45,7 @@ LList<T>::~LList() {
 
 template <class T>
 LList<T>& LList<T>::insertToEnd(T content) {
-	Node* newnode = new Node(data);
+	Node* newnode = new Node(content);
 	if (first == NULL)
 		first = newnode;
 	else
@@ -56,15 +56,14 @@ LList<T>& LList<T>::insertToEnd(T content) {
 }
 
 template <class T>
-void LList<T>::Print(ostream& stream) const {
+void LList<T>::Print() const {
 	Node* hello;
-	stream << "\nLinked List:";
 	hello = first;
 	while (hello != NULL) {
-		stream << " " << hello->content << " ";
+		cout << " " << *(hello->content) << endl;
 		hello = hello->pNext;
 	}
-	stream << endl;
+	cout << endl;
 }
 
 

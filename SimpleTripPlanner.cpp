@@ -1,5 +1,5 @@
 #include <iostream>
-#include <array>
+#include "Header.h"
 using namespace std;
 
 class String {
@@ -51,13 +51,6 @@ private:
     T m_Data[S]{};
 };
 
-class Accommodation {
-public:
-    Accommodation(String a) { m_Acco = a; }
-    void setAcco(String acco) { m_Acco = acco; };
-private:
-    String m_Acco = "";
-};
 
 int main()
 {
@@ -67,6 +60,6 @@ int main()
     
     String hotel1 = "Oceanside hotel";
     cout << hotel1 << endl;
-
+    
     return 0;
 }

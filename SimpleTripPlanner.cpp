@@ -39,30 +39,34 @@ class Array {
 public:
     int Size() const { return S; }
     T& operator[](size_t index) { return m_Data[index]; }
-    const T& operator[](size_t index) const { return m_Data[index]; }
+    const T& operator[](size_t index) const { return m_Data[index]; } //just in case
     T* Data() { return m_Data; }
+    void PrintArray(ostream& stream) {
+        for (int i = 0; i < this.Size(); i++) {
+            if (this[i] != nullptr)
+                cout << *this[i] << endl;
+        }
+    }
 private:
     T m_Data[S]{};
 };
 
+class Accommodation {
+public:
+    Accommodation(String a) { m_Acco = a; }
+    void setAcco(String acco) { m_Acco = acco; };
+private:
+    String m_Acco = "";
+};
+
 int main()
 {
-    Array <String*, 5> arr1;
-    cout << arr1.Size() << endl;
-
     String toDo1 = "Swim with the dolphins.";
     cout << toDo1 << endl;
-    cout << &toDo1 << endl;
-
-    arr1[0] = &toDo1;
-    cout << arr1[0];
-
-    for (int i = 0; i < arr1.Size(); i++) {
-        if (arr1[i] != nullptr)
-            cout << *arr1[i] << endl;
-    }
-
-    String hotel = "Oceanside hotel";
+    cout << &toDo1 << endl; //the String pointer
     
+    String hotel1 = "Oceanside hotel";
+    cout << hotel1 << endl;
+
     return 0;
 }

@@ -19,7 +19,7 @@ public:
 
     ~String() {
         delete[] m_Buffer;
-        cout << "\nDeleted. \n";
+        cout << "\nDeleted.";
     }
 
     char& operator[](unsigned int index) {
@@ -47,19 +47,22 @@ private:
 
 int main()
 {
-    Array <String*, 5> arr;
-    cout << arr.Size() << endl;
+    Array <String*, 5> arr1;
+    cout << arr1.Size() << endl;
 
     String toDo1 = "Swim with the dolphins.";
     cout << toDo1 << endl;
     cout << &toDo1 << endl;
 
-    arr[0] = &toDo1;
-    cout << arr[0];
+    arr1[0] = &toDo1;
+    cout << arr1[0];
 
-    for (int i = 0; i < arr.Size(); i++) {
-        if (arr[i] != nullptr)
-            cout << *arr[i] << endl;
+    for (int i = 0; i < arr1.Size(); i++) {
+        if (arr1[i] != nullptr)
+            cout << *arr1[i] << endl;
     }
+
+    String hotel = "Oceanside hotel";
+    
     return 0;
 }

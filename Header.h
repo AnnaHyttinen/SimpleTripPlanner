@@ -7,6 +7,7 @@ private:
     unsigned int m_Size;
     char* m_Buffer;
 public:
+    String() {};
     String(const char* string) {
         m_Size = strlen(string);
         m_Buffer = new char[m_Size + 1];
@@ -27,10 +28,16 @@ public:
     }
 
     friend ostream& operator<<(ostream& stream, const String& string);
+    friend istream& operator>>(istream& stream, const String& string);
 };
 
 ostream& operator<<(ostream& stream, const String& string) {
     stream << string.m_Buffer;
+    return stream;
+}
+
+istream& operator>>(istream& stream, const String& string) {
+    stream >> string.m_Buffer;
     return stream;
 }
 

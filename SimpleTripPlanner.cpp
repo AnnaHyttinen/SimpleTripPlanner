@@ -4,74 +4,19 @@
 #include "Header2.h"
 using namespace std;
 
-class Day: public String, public LList<String*> {
-public:
-    Day() { 
-        LList<String*> toDoList;
-        cout << "What would you like to call this new day? ";
-        cin >> dayName;
-        cout << "You selected a fine name: " << dayName << endl;
-    }
-    ~Day() {
-        delete[] dayName;
-        delete[] accommodation;
-    }
-    void SwitchAction() { 
-        int answer;
-        ListActivity();
-        cout << "Would you like to add(1) or remove(2)an activity?";
-        cin >> answer;
-        if (answer != 1 && answer != 2) {
-            cout << "How about setting an accommodation(3) or nothing else for " << dayName << "(4)?";
-            cin >> answer;
-        }
-        if (answer != 1 && answer != 2 && answer != 3 && answer != 4) {
-            SwitchAction();
-        }
-        else {
-            switch (answer) {
-            case 1:
-                WhatToDo();
-                break;
-            case 2:
-                RemoveToDo();
-                break;
-            case 3:
-                SetAcco();
-                break;
-            case 4:
-                break;
-            }
-        }
-    }
-    void WhatToDo() {
-        String toDo;
-        cout << "What would you like to do?";
-        cin >> toDo;
-        insertToEnd(&toDo);
-    }
-    void RemoveToDo() {
-        int answer;
-        cout << "Which activity would you like to remove?\n";
-        ListActivity();
-        cin >> answer;
-    }
-    void SetAcco() {
-        cout << "Do you have an idea about an accommodation for " << dayName << "?";
-        cin >> accommodation;
-    }
-    void ListActivity() {
-        Print();
-    }
-private:
-    char* dayName{};
-    char* accommodation{};
-};
+void CreateDay() {
+    char* name = new char[10];
+    cout << "Type a preferred name for the day:\n";
+    cin >> name;
+    Day day(name);
+    day.GetName();
+    day.SwitchAction();
+}
 
 int main()
 {
-    Day day;
-    day.SwitchAction();
+    CreateDay();
+    
     /*
     String toDo1 = "Swim with the dolphins.";
     cout << toDo1 << endl;

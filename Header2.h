@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+using namespace std;
 
 class Day : public String, public LList<String*> {
 public:
@@ -10,10 +11,14 @@ public:
     }
     void SwitchAction();
     void WhatToDo() {
-        char str[30];
-        cout << "Describe what you would like to do:\n";
-        cin >> str;
-        String toDo(str);
+        char todo[50];
+        cin.clear();
+        cin.sync();
+        cout << "Describe what you would like to do: (\"Today...\")\n";
+        cin >> todo;
+        cin.getline(todo, 50);
+        
+        String toDo(todo);
         insertToEnd(&toDo);
         Print();
     }

@@ -1,21 +1,23 @@
 #include <iostream>
 #include "Header.h"
 #include "Header1.h"
+#include "Header2.h"
 using namespace std;
 
 class Day: public String, public LList<String*> {
 public:
-    Day() {}
+    Day() { 
+        LList<String*> toDoList;
+        cout << "What would you like to call this new day? ";
+        cin >> dayName;
+        cout << "You selected a fine name: " << dayName << endl;
+    }
     ~Day() {
         delete[] dayName;
         delete[] accommodation;
     }
     void SwitchAction() { 
-        if (dayName = NULL) {
-            cout << "What would you like to call this day? ";
-            cin >> dayName;
-        }
-        char answer;
+        int answer;
         ListActivity();
         cout << "Would you like to add(1) or remove(2)an activity?";
         cin >> answer;
@@ -43,12 +45,16 @@ public:
         }
     }
     void WhatToDo() {
+        String toDo;
         cout << "What would you like to do?";
+        cin >> toDo;
+        insertToEnd(&toDo);
     }
     void RemoveToDo() {
         int answer;
-        cout << "What would you like to remove?\n";
+        cout << "Which activity would you like to remove?\n";
         ListActivity();
+        cin >> answer;
     }
     void SetAcco() {
         cout << "Do you have an idea about an accommodation for " << dayName << "?";
@@ -65,6 +71,7 @@ private:
 int main()
 {
     Day day;
+    day.SwitchAction();
     /*
     String toDo1 = "Swim with the dolphins.";
     cout << toDo1 << endl;

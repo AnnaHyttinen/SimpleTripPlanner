@@ -1,69 +1,51 @@
 #pragma once
-#include <iostream>
 using namespace std;
 
-template<class T>
-class LList {
+class String {
 private:
-	class Node {
-	public:
-		T content;
-		Node* pNext;
-		Node() : pNext(NULL) {}
-		Node(T cont) : content(cont), pNext(NULL){}
-		Node(T cont, Node* next) : content(cont), pNext(next){}
-	};
-
-	Node* first;
-	Node* last;
-
+    unsigned int m_Size;
+    char* m_Buffer;
 public:
-	LList();
-	~LList();
-	LList<T>& insertToEnd(T content);
-	void Print() const;
+    String(const char* string) {
+        m_Size = strlen(string);
+        m_Buffer = new char[m_Size + 1];
+        memcpy(m_Buffer, string, m_Size);
+        m_Buffer[m_Size] = 0;
+        cout << "Created! \n";
+    }
+
+    String(const String& other) = delete; //disable copying
+
+    ~String() {
+        delete[] m_Buffer;
+        cout << "\nDeleted.";
+    }
+
+    char& operator[](unsigned int index) {
+        return m_Buffer[index];
+    }
+
+    friend ostream& operator<<(ostream& stream, const String& string);
 };
 
-template<class T>
-LList<T>::LList() {
-	first = NULL;
-	last = NULL;
+ostream& operator<<(ostream& stream, const String& string) {
+    stream << string.m_Buffer;
+    return stream;
 }
 
-template<class T>
-LList<T>::~LList() {
-	Node* a1, * a2;
-
-	a1 = first;
-	while (a1 != NULL){
-		a2 = a1->pNext;
-		delete a1;
-		cout << "\nDeleted a node." << endl;
-		a1 = a2;
-	}
-}
-
-template <class T>
-LList<T>& LList<T>::insertToEnd(T content) {
-	Node* newnode = new Node(content);
-	if (first == NULL)
-		first = newnode;
-	else
-		last->pNext = newnode;
-	last = newnode;
-
-	return *this;
-}
-
-template <class T>
-void LList<T>::Print() const {
-	Node* hello;
-	hello = first;
-	while (hello != NULL) {
-		cout << " " << *(hello->content) << endl;
-		hello = hello->pNext;
-	}
-	cout << endl;
-}
-
-
+template<typename T, size_t S>
+class Array {
+public:
+    int Size() const { return S; }
+    T& operator[](size_t index) { return m_Data[index]; }
+    const T& operator[](size_t index) const { return m_Data[index]; } //just in case
+    T* Data() { return m_Data; }
+    void PrintArray(ostream& stream) {
+        for (int i = 0; i < this.Size(); i++) {
+            if (this[i] != nullptr)
+                cout << *this[i] << endl;
+        }
+    }
+private:
+    T m_Data[S]{};
+};

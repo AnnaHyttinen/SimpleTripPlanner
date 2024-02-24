@@ -27,6 +27,8 @@ public:
         return m_Buffer[index];
     }
 
+    //need for operator overload of + 
+
     friend ostream& operator<<(ostream& stream, const String& string);
     friend istream& operator>>(istream& stream, const String& string);
 };

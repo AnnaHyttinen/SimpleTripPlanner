@@ -11,14 +11,14 @@ public:
     }
     void SwitchAction();
     void WhatToDo() {
-        char todo[50];
+        char what[20];
+        char todo[100];
         cin.clear();
         cin.sync();
         cout << "Describe what you would like to do: (\"Today...\")\n";
-        cin >> todo;
-        cin.getline(todo, 50);
-        
-        String toDo(todo);
+        cin >> what;
+        cin.getline(todo, 100);
+        String toDo = what + todo;
         insertToEnd(&toDo);
         Print();
     }

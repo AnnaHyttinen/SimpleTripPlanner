@@ -16,7 +16,9 @@ public:
         cout << "Created! \n";
     }
 
-    String(const String& other) = delete; //disable copying
+    String(const String& other) {
+
+    }
 
     ~String() {
         delete[] m_Buffer;
@@ -27,7 +29,7 @@ public:
         return m_Buffer[index];
     }
 
-    char& operator+(char& b) {
+    String& operator+(String& b) {
         return b;
     }
 

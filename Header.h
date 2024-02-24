@@ -27,7 +27,9 @@ public:
         return m_Buffer[index];
     }
 
-    //need for operator overload of + 
+    char& operator+(char& b) {
+        return b;
+    }
 
     friend ostream& operator<<(ostream& stream, const String& string);
     friend istream& operator>>(istream& stream, const String& string);
@@ -42,7 +44,7 @@ istream& operator>>(istream& stream, const String& string) {
     stream >> string.m_Buffer;
     return stream;
 }
-
+/*
 template<typename T, size_t S>
 class Array {
 public:
@@ -59,3 +61,4 @@ public:
 private:
     T m_Data[S]{};
 };
+*/

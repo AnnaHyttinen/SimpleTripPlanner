@@ -18,7 +18,7 @@ public:
         cout << "Describe what you would like to do: (\"Today...\")\n";
         cin >> what;
         cin.getline(todo, 100);
-        String toDo = what + todo;
+        String toDo = what + *todo;
         insertToEnd(&toDo);
         Print();
     }

@@ -15,12 +15,10 @@ public:
         char todo[100];
         cin.clear();
         cin.sync();
-        cout << "Describe what you would like to do: \n";
+        cout << "Describe what you would like to do, like \"Today...\": \n";
         cin >> what;
         cin.getline(todo, 100);
-        String nani(what);
-        String shiteru(todo);
-        String toDo = nani + shiteru;
+        String toDo(todo);
         insertToEnd(&toDo);
         Print();
     }

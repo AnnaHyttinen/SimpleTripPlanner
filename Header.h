@@ -15,11 +15,16 @@ public:
         m_Buffer[m_Size] = 0;
         cout << "Created! \n";
     }
-
+    String(const String& other) = delete;
+    /*
     String(const String& other) {
-
+        m_Size = this->m_Size + other.m_Size;
+        m_Buffer = new char[m_Size + 1];
+        memcpy(m_Buffer, other.m_Buffer, m_Size);
+        m_Buffer[m_Size] = 0;
+        cout << "Created a copy for some reason. \n";
     }
-
+*/    
     ~String() {
         delete[] m_Buffer;
         cout << "\nDeleted.";

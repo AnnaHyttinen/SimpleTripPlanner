@@ -15,8 +15,8 @@ public:
         m_Buffer[m_Size] = 0;
         cout << "Created! \n";
     }
-    String(const String& other) = delete;
-    /*
+    //String(const String& other) = delete;
+    
     String(const String& other) {
         m_Size = this->m_Size + other.m_Size;
         m_Buffer = new char[m_Size + 1];
@@ -24,7 +24,15 @@ public:
         m_Buffer[m_Size] = 0;
         cout << "Created a copy for some reason. \n";
     }
-*/    
+
+    String(const string& other) {
+        m_Size = other.size();
+        m_Buffer = new char[m_Size + 1];
+        memcpy(m_Buffer, other.data(), m_Size);
+        m_Buffer[m_Size] = 0;
+        cout << "Created a String object out of string. \n";
+    }
+  
     ~String() {
         delete[] m_Buffer;
         cout << "\nDeleted.";
@@ -34,8 +42,8 @@ public:
         return m_Buffer[index];
     }
 
-    String& operator+(String& b) {
-        return b;
+    char* operator+(String& b) {
+        return b.m_Buffer;
     }
 
     friend ostream& operator<<(ostream& stream, const String& string);
@@ -43,12 +51,12 @@ public:
 };
 
 ostream& operator<<(ostream& stream, const String& string) {
-    stream << string.m_Buffer;
+    //stream << string.m_Buffer;
     return stream;
 }
 
 istream& operator>>(istream& stream, const String& string) {
-    stream >> string.m_Buffer;
+    //stream >> string.m_Buffer;
     return stream;
 }
 /*

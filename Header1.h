@@ -58,11 +58,11 @@ LList<T>& LList<T>::insertToEnd(T content) {
 template <class T>
 void LList<T>::Print() const {
 	int i = 1;
-	Node* hello;
-	hello = first;
-	while (hello != NULL) {
-		cout << i << ") " << *(hello->content) << endl;
-		hello = hello->pNext;
+	Node* n;
+	n = first;
+	while (n != NULL) {
+		cout << i << ") " << *(n->content) << endl;
+		n = n->pNext;
 		i++;
 	}
 	cout << endl;

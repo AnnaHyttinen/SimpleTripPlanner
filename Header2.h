@@ -13,22 +13,18 @@ public:
     void SwitchAction();
     void WhatToDo() {
         string tempString;
-        cout << "Describe what you would like to do, like \"Today...\": \n";
+        cout << "Describe what you would like to do: \n";
         while (cin) {
             cin >> tempString;
-            tempString += " ";
-            cout << tempString;
+            if (cin.peek() == '\n') {
+                cin.clear(ios::eofbit);
+            }
+            tempString = tempString + " ";
         }
-        
-        /*
-        string what;
-        cin.clear();
-        cin.sync();
-        cout << "Describe what you would like to do, like \"Today...\": \n";
-        //cin >> what;
-        getline(cin, what, '\n');*/
+        cout << tempString << endl;
         String toDo(tempString);
         insertToEnd(&toDo);
+        cout << toDo;
         Print();
     }
     void RemoveToDo() {

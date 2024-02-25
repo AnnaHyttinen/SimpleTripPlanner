@@ -51,12 +51,10 @@ public:
 };
 
 ostream& operator<<(ostream& stream, const String& string) {
-    //stream << string.m_Buffer;
     return stream;
 }
 
 istream& operator>>(istream& stream, const String& string) {
-    //stream >> string.m_Buffer;
     return stream;
 }
 /*

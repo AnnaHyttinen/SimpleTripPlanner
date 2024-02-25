@@ -12,19 +12,17 @@ public:
     }
     void SwitchAction();
     void WhatToDo() {
-        string tempString;
+        LList<char*> toDo;
+        char thing[50];
         cout << "Describe what you would like to do: \n";
         while (cin) {
-            cin >> tempString;
+            cin >> thing;
+            toDo.insertToEnd(thing);
+            cout << thing;
             if (cin.peek() == '\n') {
                 cin.clear(ios::eofbit);
             }
-            tempString = tempString + " ";
         }
-        cout << tempString << endl;
-        String toDo(tempString);
-        insertToEnd(&toDo);
-        cout << toDo;
         Print();
     }
     void RemoveToDo() {

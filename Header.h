@@ -15,8 +15,8 @@ public:
         m_Buffer[m_Size] = 0;
         cout << "Created! \n";
     }
-    //String(const String& other) = delete;
-    
+    String(const String& other) = delete;
+    /*
     String(const String& other) {
         m_Size = this->m_Size + other.m_Size;
         m_Buffer = new char[m_Size + 1];
@@ -24,13 +24,13 @@ public:
         m_Buffer[m_Size] = 0;
         cout << "Created a copy for some reason. \n";
     }
-
+    */
     String(const string& other) {
         m_Size = other.size();
         m_Buffer = new char[m_Size + 1];
         memcpy(m_Buffer, other.data(), m_Size);
         m_Buffer[m_Size] = 0;
-        cout << "Created a String object out of string. \n";
+        cout << "Created a String object out of std string. \n";
     }
   
     ~String() {
@@ -57,6 +57,42 @@ ostream& operator<<(ostream& stream, const String& string) {
 istream& operator>>(istream& stream, const String& string) {
     return stream;
 }
+
+template<typename T>
+class Vector {
+    T* arr;
+    int capacity;
+    int current;
+public:
+    Vector() {
+        arr = new T[1];
+        capacity = 1;
+        current = 0;
+    }
+    ~Vector() { delete[] arr; }
+
+    void Push(T data) {
+        if (current == capacity) {
+            T* temp = new T[2 * capacity];
+            for (int i = 0; i < capacity; i++) {
+                temp[i] = arr[i];
+            }
+            delete[] arr;
+            capacity *= 2;
+            arr = temp;
+        }
+        arr[current] = data;
+        current++;
+    }
+
+    void Print() {
+        for (int i = 0; i < current; i++) {
+            cout << arr[i] << " ";
+        }
+    }
+};
+
+
 /*
 template<typename T, size_t S>
 class Array {

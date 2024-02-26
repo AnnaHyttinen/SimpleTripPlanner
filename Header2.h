@@ -12,18 +12,30 @@ public:
     }
     void SwitchAction();
     void WhatToDo() {
-        LList<char*> toDo;
-        char thing[50];
-        cout << "Describe what you would like to do: \n";
+        LList<String> toDo;
+        Vector<char*> thing;
+        char in[20];
+        cout << "Describe what to do: ";
         while (cin) {
-            cin >> thing;
-            toDo.insertToEnd(thing);
-            cout << thing;
+            cin >> in;
+            cout << in;
+            thing.Push(in);
             if (cin.peek() == '\n') {
                 cin.clear(ios::eofbit);
             }
         }
-        Print();
+        thing.Print();
+        /*char thing[50];
+        cout << "Describe what you would like to do: \n";
+        while (cin) {
+            cin >> thing;
+            toDo.insertToEnd(thing);
+            cout << thing << endl;
+            if (cin.peek() == '\n') {
+                cin.clear(ios::eofbit);
+            }
+        }
+        toDo.Print();*/
     }
     void RemoveToDo() {
         int answer;

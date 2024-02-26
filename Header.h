@@ -16,15 +16,7 @@ public:
         cout << "Created! \n";
     }
     String(const String& other) = delete;
-    /*
-    String(const String& other) {
-        m_Size = this->m_Size + other.m_Size;
-        m_Buffer = new char[m_Size + 1];
-        memcpy(m_Buffer, other.m_Buffer, m_Size);
-        m_Buffer[m_Size] = 0;
-        cout << "Created a copy for some reason. \n";
-    }
-    */
+
     String(const string& other) {
         m_Size = other.size();
         m_Buffer = new char[m_Size + 1];
@@ -76,6 +68,7 @@ public:
             T* temp = new T[2 * capacity];
             for (int i = 0; i < capacity; i++) {
                 temp[i] = arr[i];
+                cout << "Pushed to a Vector! \n";
             }
             delete[] arr;
             capacity *= 2;
@@ -87,13 +80,11 @@ public:
 
     void Print() {
         for (int i = 0; i < current; i++) {
-            cout << arr[i] << " ";
+            cout << arr[i] << "_";
         }
     }
 };
 
-
-/*
 template<typename T, size_t S>
 class Array {
 public:
@@ -110,4 +101,3 @@ public:
 private:
     T m_Data[S]{};
 };
-*/

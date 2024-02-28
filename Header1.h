@@ -61,10 +61,9 @@ void LList<T>::Print() const {
 	Node* n;
 	n = first;
 	while (n != NULL) {
-		cout << i << ") " << *(n->content) << endl;
+		cout << i << ") " << *(n->content) << "This should print the content. " << endl << endl;
 		n = n->pNext;
 		i++;
 	}
-	cout << endl;
 }
 

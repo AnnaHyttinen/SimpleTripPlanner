@@ -16,18 +16,7 @@ public:
         LList<char*> toDo;
     }
     void SwitchAction();
-    void WhatToDo() {
-        char thing[200];
-        cout << "Describe what you would like to do: ";
-        while (cin) {
-            cin.getline(thing, sizeof(thing));
-            if (cin.peek() == '\n') {
-                cin.clear(ios::eofbit);
-            }
-        }
-        toDo.insertToEnd(thing);
-        toDo.Print();
-    }
+    void WhatToDo();
     void RemoveToDo() {
         int answer;
         cout << "Which of these activities would you like to remove?\n";
@@ -44,10 +33,10 @@ public:
 };
 
 void Day:: SwitchAction() {
-    int answer;
+    int answer = 0;
     Print();
-    cout << "Would you like to: \n1 add an activity\n2 remove an activity\n";
-    cout << "3 set an accommodation/n4 nothing else for " << this->dayName << "?\n";
+    cout << "Would you like to: \n1 add an activity,\n2 remove an activity,\n";
+    cout << "3 set an accommodation or\n4 nothing else for this day?\n\n";
     cin >> answer;
     if (answer != 1 && answer != 2 && answer != 3 && answer != 4) {
         SwitchAction();
@@ -64,9 +53,23 @@ void Day:: SwitchAction() {
             SetAcco();
             break;
         case 4:
-            return;
             break;
         }
     }
 }
 
+void Day::WhatToDo() {
+    char thing[200];
+    cout << "Describe what you would like to do: ";
+    while (cin) {
+        cin.getline(thing, sizeof(thing));
+        if (cin.peek() == '\n') {
+            cin.clear(ios::eofbit);
+        }
+    }
+    cin.clear();
+
+    toDo.insertToEnd(thing);
+    toDo.Print();
+    SwitchAction(); 
+}

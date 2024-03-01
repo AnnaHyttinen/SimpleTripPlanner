@@ -60,6 +60,7 @@ void LList<T>::Print() const {
 	int i = 1;
 	Node* n;
 	n = first;
+	cout << endl;
 
 	while (n != NULL) {
 		cout << i << ") " << n->content << endl;
@@ -71,16 +72,24 @@ void LList<T>::Print() const {
 template <class T>
 void LList<T>::Remove(int index) {
 	int i = 1;
-	Node* n;
-	n = first;
+	Node* n = first;
+	Node* previous = first;
 
 	while (i < index) {
-		cout << "Debug message: " << n << n->content << endl;
+		previous = n;
 		n = n->pNext;
 		i++;
 	}
 	if (i = index) {
-		cout << "Now it's time to destroy! ";
+		cout << n->content << " destroyed! " << endl;
+		if (index == 1) {
+			first = n->pNext;
+			delete n;
+		}
+		else {
+			previous->pNext = n->pNext; // 1st index will not do
+			delete n;
+		}
 	}
 }
 

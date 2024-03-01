@@ -23,6 +23,7 @@ public:
 	LList<T>& Push(T content);
 	void Print() const;
 	void Remove(int index);
+	int Number();
 };
 
 template<class T>
@@ -39,7 +40,6 @@ LList<T>::~LList() {
 	while (a1 != NULL) {
 		a2 = a1->pNext;
 		delete a1;
-		cout << "\nDeleted a node." << endl;
 		a1 = a2;
 	}
 }
@@ -52,7 +52,6 @@ LList<T>& LList<T>::Push(T content) {
 	else
 		last->pNext = newnode;
 	last = newnode;
-	cout << "Pushed to a node! " << endl;
 	return *this;
 }
 
@@ -61,8 +60,9 @@ void LList<T>::Print() const {
 	int i = 1;
 	Node* n;
 	n = first;
+
 	while (n != NULL) {
-		cout << i << ") " << n->content << " <-This should be the content. " << endl;
+		cout << i << ") " << n->content << endl;
 		n = n->pNext;
 		i++;
 	}
@@ -70,14 +70,28 @@ void LList<T>::Print() const {
 
 template <class T>
 void LList<T>::Remove(int index) {
-	int i = 0;
+	int i = 1;
 	Node* n;
-	while (i != index) {
-		cout << i + 1 << ") " << n->content << endl;
-		index++;
+	n = first;
+
+	while (i < index) {
+		cout << "Debug message: " << n << n->content << endl;
+		n = n->pNext;
+		i++;
 	}
 	if (i = index) {
-		delete n;
+		cout << "Now it's time to destroy! ";
 	}
 }
 
+template <class T>
+int LList<T>::Number() {
+	int i = 1;
+	Node* n;
+	n = first;
+	while (n != NULL) {
+		n = n->pNext;
+		i++;
+	}
+	return i;
+}

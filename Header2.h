@@ -19,7 +19,8 @@ public:
         int answer;
         cout << "Which of these activities would you like to remove?\n";
         cin >> answer;
-        Print();
+        toDo.Remove(answer);
+        toDo.Print();
         SwitchAction();
     }
     void SetAcco() {

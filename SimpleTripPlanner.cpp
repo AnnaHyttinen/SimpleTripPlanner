@@ -14,6 +14,7 @@ void CreateDay() {
     cin.ignore();
 
     Day day(name);
+    //needs to go to a linked list of plan, then multiple plans
     day.GetName();
     day.SwitchAction();
 }

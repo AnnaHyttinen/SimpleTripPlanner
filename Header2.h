@@ -18,8 +18,9 @@ public:
     void RemoveToDo() {
         int answer;
         cout << "Which of these activities would you like to remove?\n";
-        Print();
         cin >> answer;
+        Print();
+        SwitchAction();
     }
     void SetAcco() {
         cout << "Type your idea for an accommodation for " << dayName << ": \n";

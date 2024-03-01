@@ -22,6 +22,7 @@ public:
 	~LList();
 	LList<T>& Push(T content);
 	void Print() const;
+	void Remove(int index);
 };
 
 template<class T>
@@ -64,6 +65,19 @@ void LList<T>::Print() const {
 		cout << i << ") " << n->content << " <-This should be the content. " << endl;
 		n = n->pNext;
 		i++;
+	}
+}
+
+template <class T>
+void LList<T>::Remove(int index) {
+	int i = 0;
+	Node* n;
+	while (i != index) {
+		cout << i + 1 << ") " << n->content << endl;
+		index++;
+	}
+	if (i = index) {
+		delete n;
 	}
 }
 

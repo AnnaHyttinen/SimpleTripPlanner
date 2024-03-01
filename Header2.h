@@ -5,14 +5,12 @@ using namespace std;
 
 class Day : public String, public LList<char*> {
 private:
-    char* dayName{};
-    char* accommodation{};
-    LList<char*> toDo;
+    string dayName{};
+    string accommodation{};
+    LList<string> toDo;
 public:
-    Day(char* name) : dayName(name) { LList<char*> toDo; }
+    Day(string name) : dayName(name) { LList<char*> toDo; }
     ~Day() {
-        delete[] dayName;
-        delete[] accommodation;
         LList<char*> toDo;
     }
     void SwitchAction();
@@ -25,7 +23,8 @@ public:
     }
     void SetAcco() {
         cout << "Type your idea for an accommodation for " << dayName << ": \n";
-        cin >> accommodation;
+        cin.ignore();
+        getline(cin, accommodation);
     }
     void GetName() {
         cout << "This day is now called: " << dayName << endl;
@@ -38,6 +37,7 @@ void Day:: SwitchAction() {
     cout << "Would you like to: \n1 add an activity,\n2 remove an activity,\n";
     cout << "3 set an accommodation or\n4 nothing else for this day?\n\n";
     cin >> answer;
+
     if (answer != 1 && answer != 2 && answer != 3 && answer != 4) {
         SwitchAction();
     }
@@ -59,17 +59,12 @@ void Day:: SwitchAction() {
 }
 
 void Day::WhatToDo() {
-    char thing[200];
+    string thing;
     cout << "Describe what you would like to do: ";
-    while (cin) {
-        cin.getline(thing, sizeof(thing));
-        if (cin.peek() == '\n') {
-            cin.clear(ios::eofbit);
-        }
-    }
-    cin.clear();
+    cin.ignore();
+    getline(cin, thing);
 
-    toDo.insertToEnd(thing);
+    toDo.Push(thing);
     toDo.Print();
     SwitchAction(); 
 }

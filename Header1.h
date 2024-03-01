@@ -20,7 +20,7 @@ private:
 public:
 	LList();
 	~LList();
-	LList<T>& insertToEnd(T content);
+	LList<T>& Push(T content);
 	void Print() const;
 };
 
@@ -44,14 +44,14 @@ LList<T>::~LList() {
 }
 
 template <class T>
-LList<T>& LList<T>::insertToEnd(T content) {
+LList<T>& LList<T>::Push(T content) {
 	Node* newnode = new Node(content);
 	if (first == NULL)
 		first = newnode;
 	else
 		last->pNext = newnode;
 	last = newnode;
-
+	cout << "Pushed to a node! " << endl;
 	return *this;
 }
 
@@ -61,7 +61,7 @@ void LList<T>::Print() const {
 	Node* n;
 	n = first;
 	while (n != NULL) {
-		cout << i << ") " << *(n->content) << "This should print the content. " << endl << endl;
+		cout << i << ") " << n->content << " <-This should be the content. " << endl;
 		n = n->pNext;
 		i++;
 	}

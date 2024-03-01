@@ -2,20 +2,16 @@
 #include "Header.h"
 #include "Header1.h"
 #include "Header2.h"
+#include <string.h>
 using namespace std;
 
 bool planner = true;
 
 void CreateDay() {
-    char* name = new char[20];
+    string name;
     cout << "Type a preferred name for the day: ";
-    while (cin) {
-        cin.getline(name, sizeof(name));
-        if (cin.peek() == '\n') {
-            cin.clear(ios::eofbit);
-        }
-    }
-    cin.clear();
+    getline(cin, name);
+    cin.ignore();
 
     Day day(name);
     day.GetName();

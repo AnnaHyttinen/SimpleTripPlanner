@@ -6,29 +6,44 @@
 using namespace std;
 
 bool planner = true;
+class Plan : public LList<char*> {
+private:
+    string planName;
+    LList<Day> days;
+public:
+    Plan(string name) : planName(name) { LList<Day> days; }
+    ~Plan() { LList<Day> days; } // is this how it is destroyed?
+    void CreateDay() {
+        string name;
+        cout << "Type a preferred name for the day: ";
+        getline(cin, name);
+        cin.ignore();
 
-void CreateDay() {
-    string name;
-    cout << "Type a preferred name for the day: ";
-    getline(cin, name);
-    cin.ignore();
+        Day day(name);
+        days.Push(day);
+        day.GetName();
+        day.SwitchAction();
+    }
+    void GetName() { cout << "\t# " << planName << " #" << endl << endl; }
+};
 
-    Day day(name);
-    //needs to go to a linked list of plan, then multiple plans
-    day.GetName();
-    day.SwitchAction();
-}
 
 void MainMenu() {
-    //see the statistics and make changes or
-    CreateDay();
+    string n = "Default plan";
+    cout << "Give a name for your plan: ";
+    getline(cin, n);
+    cin.ignore();
+    Plan plan(n);
+    plan.GetName();
+    plan.CreateDay();
 }
 
 int main()
 {
+    //also going to be a class:
     MainMenu();
-    
-    
+    //...because it contains a linked list of plans, of course
+    //every time this program is started, it creates (or loads) a main menu
     return 0;
 }
 

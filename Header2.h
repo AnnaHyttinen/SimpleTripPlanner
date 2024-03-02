@@ -3,41 +3,28 @@
 #include <string>
 using namespace std;
 
-class Day : public String, public LList<char*> {
+class Day : public LList<char*> {
 private:
     string dayName{};
     string accommodation{};
     LList<string> toDo;
 public:
-    Day(string name) : dayName(name) { LList<char*> toDo; }
+    Day(string name) : dayName(name) { LList<string> toDo; }
     ~Day() {
-        LList<char*> toDo;
+        LList<string> toDo;
     }
     void SwitchAction();
     void WhatToDo();
-    void RemoveToDo() {
-        int answer;
-        cout << "Which of these activities would you like to remove?\n";
-        cin >> answer;
-        toDo.Remove(answer);
-        toDo.Print();
-        SwitchAction();
-    }
-    void SetAcco() {
-        cout << "Type your idea for an accommodation for " << dayName << ": \n";
-        cin.ignore();
-        getline(cin, accommodation);
-    }
-    void GetName() {
-        cout << "This day is now called: " << dayName << endl;
-    }
+    void RemoveToDo();
+    void SetAcco();
+    void GetName() { cout << "The day is: " << dayName << endl; }
 };
 
 void Day:: SwitchAction() {
     int answer = 0;
     Print();
     cout << "Would you like to: \n1 add an activity,\n2 remove an activity,\n";
-    cout << "3 set an accommodation or\n4 nothing else for this day?\n\n";
+    cout << "3 set an accommodation or\n4 nothing else for this day? Your input: ";
     cin >> answer;
 
     if (answer != 1 && answer != 2 && answer != 3 && answer != 4) {
@@ -62,7 +49,7 @@ void Day:: SwitchAction() {
 
 void Day::WhatToDo() {
     string thing;
-    cout << "Describe what you would like to do: ";
+    cout << endl << "Describe what you would like to do: ";
     cin.ignore();
     getline(cin, thing);
 
@@ -70,3 +57,20 @@ void Day::WhatToDo() {
     toDo.Print();
     SwitchAction(); 
 }
+
+void Day::RemoveToDo() {
+    int answer;
+    cout << "Which of these activities would you like to remove?\n";
+    cin >> answer;
+    toDo.Remove(answer);
+    toDo.Print();
+    SwitchAction();
+}
+
+void Day::SetAcco() {
+    cout << "Type your idea for an accommodation for " << dayName << ": \n";
+    cin.ignore();
+    getline(cin, accommodation);
+}
+
+

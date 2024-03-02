@@ -7,24 +7,40 @@ using namespace std;
 
 bool planner = true;
 
-void MainMenu() {
+class Menu {
+public:
+    void CreatePlan();
+
+};
+
+void Menu::CreatePlan() {
     string n = "Default plan";
     cout << "Give a name for your plan: ";
     getline(cin, n);
     cin.ignore();
+
     Plan plan(n);
     plan.GetName();
+    plan.ListDay();
     plan.CreateDay();
+}
+
+void MainMenu() {
+    if (planner = false) {
+        
+    }
+    else {
+        cout << "*** Simple Trip Planner ***" << endl << endl;
+        cout << "No previous data was found. Let's create a new plan! " << endl;
+        Menu menu;
+        menu.CreatePlan();
+    }
 }
 
 int main()
 {
-    while (planner = true) {
-        MainMenu();
-    }
-    //also going to be a class
-    //...because it contains a linked list of plans, of course
-    //every time this program is started, it creates (or loads) a main menu
+    MainMenu();
+
     return 0;
 }
 

@@ -3,7 +3,7 @@
 #include <string>
 using namespace std;
 
-class Day : public LList<char*> {
+class Day : public LList<string> {
 private:
     string dayName{};
     string accommodation{};
@@ -18,6 +18,7 @@ public:
     void RemoveToDo();
     void SetAcco();
     void GetName() { cout << "The day is: " << dayName << endl; }
+    
 };
 
 void Day::SwitchAction() {
@@ -26,6 +27,7 @@ void Day::SwitchAction() {
     cout << "Would you like to: \n1 add an activity,\n2 remove an activity,\n";
     cout << "3 set an accommodation or\n4 nothing else for this day? Your input: ";
     cin >> answer;
+    cin.ignore();
 
     if (answer != 1 && answer != 2 && answer != 3 && answer != 4) {
         SwitchAction();

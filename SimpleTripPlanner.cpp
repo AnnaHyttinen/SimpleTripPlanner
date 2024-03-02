@@ -6,27 +6,6 @@
 using namespace std;
 
 bool planner = true;
-class Plan : public LList<char*> {
-private:
-    string planName;
-    LList<Day> days;
-public:
-    Plan(string name) : planName(name) { LList<Day> days; }
-    ~Plan() { LList<Day> days; } // is this how it is destroyed?
-    void CreateDay() {
-        string name;
-        cout << "Type a preferred name for the day: ";
-        getline(cin, name);
-        cin.ignore();
-
-        Day day(name);
-        days.Push(day);
-        day.GetName();
-        day.SwitchAction();
-    }
-    void GetName() { cout << "\t# " << planName << " #" << endl << endl; }
-};
-
 
 void MainMenu() {
     string n = "Default plan";
@@ -40,8 +19,10 @@ void MainMenu() {
 
 int main()
 {
-    //also going to be a class:
-    MainMenu();
+    while (planner = true) {
+        MainMenu();
+    }
+    //also going to be a class
     //...because it contains a linked list of plans, of course
     //every time this program is started, it creates (or loads) a main menu
     return 0;

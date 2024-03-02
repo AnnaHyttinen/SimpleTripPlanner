@@ -1,106 +1,77 @@
 #pragma once
 #include <iostream>
+#include <string>
 using namespace std;
 
-template<class T>
-class LList {
+class Day : public LList<char*> {
 private:
-	class Node {
-	public:
-		T content;
-		Node* pNext;
-		Node() : pNext(NULL) {}
-		Node(T cont) : content(cont), pNext(NULL) {}
-		Node(T cont, Node* next) : content(cont), pNext(next) {}
-	};
-
-	Node* first;
-	Node* last;
-
+    string dayName{};
+    string accommodation{};
+    LList<string> toDo;
 public:
-	LList();
-	~LList();
-	LList<T>& Push(T content);
-	void Print() const;
-	void Remove(int index);
-	int Number();
+    Day(string name) : dayName(name) { LList<string> toDo; }
+    ~Day() {
+        LList<string> toDo;
+    }
+    void SwitchAction();
+    void WhatToDo();
+    void RemoveToDo();
+    void SetAcco();
+    void GetName() { cout << "The day is: " << dayName << endl; }
 };
 
-template<class T>
-LList<T>::LList() {
-	first = NULL;
-	last = NULL;
+void Day::SwitchAction() {
+    int answer = 0;
+    Print();
+    cout << "Would you like to: \n1 add an activity,\n2 remove an activity,\n";
+    cout << "3 set an accommodation or\n4 nothing else for this day? Your input: ";
+    cin >> answer;
+
+    if (answer != 1 && answer != 2 && answer != 3 && answer != 4) {
+        SwitchAction();
+    }
+    else {
+        switch (answer) {
+        case 1:
+            WhatToDo();
+            break;
+        case 2:
+            RemoveToDo();
+            break;
+        case 3:
+            SetAcco();
+            break;
+        case 4:
+            break;
+        }
+    }
 }
 
-template<class T>
-LList<T>::~LList() {
-	Node* a1, * a2;
+void Day::WhatToDo() {
+    string thing;
+    cout << endl << "Describe what you would like to do: ";
+    cin.ignore();
+    getline(cin, thing);
 
-	a1 = first;
-	while (a1 != NULL) {
-		a2 = a1->pNext;
-		delete a1;
-		a1 = a2;
-	}
+    toDo.Push(thing);
+    toDo.Print();
+    SwitchAction();
 }
 
-template <class T>
-LList<T>& LList<T>::Push(T content) {
-	Node* newnode = new Node(content);
-	if (first == NULL)
-		first = newnode;
-	else
-		last->pNext = newnode;
-	last = newnode;
-	return *this;
+void Day::RemoveToDo() {
+    int answer;
+    cout << "Which of these activities would you like to remove?\n";
+    cin.ignore();
+    cin >> answer;
+    toDo.Remove(answer);
+    toDo.Print();
+    SwitchAction();
 }
 
-template <class T>
-void LList<T>::Print() const {
-	int i = 1;
-	Node* n;
-	n = first;
-	cout << endl;
-
-	while (n != NULL) {
-		cout << i << ") " << n->content << endl;
-		n = n->pNext;
-		i++;
-	}
+void Day::SetAcco() {
+    cout << "Type your idea for an accommodation for " << dayName << ": \n";
+    cin.ignore();
+    getline(cin, accommodation);
+    SwitchAction();
 }
 
-template <class T>
-void LList<T>::Remove(int index) {
-	int i = 1;
-	Node* n = first;
-	Node* previous = first;
-
-	while (i < index) {
-		previous = n;
-		n = n->pNext;
-		i++;
-	}
-	if (i = index) {
-		cout << n->content << " destroyed! " << endl;
-		if (index == 1) {
-			first = n->pNext;
-			delete n;
-		}
-		else {
-			previous->pNext = n->pNext; // 1st index will not do
-			delete n;
-		}
-	}
-}
-
-template <class T>
-int LList<T>::Number() {
-	int i = 1;
-	Node* n;
-	n = first;
-	while (n != NULL) {
-		n = n->pNext;
-		i++;
-	}
-	return i;
-}

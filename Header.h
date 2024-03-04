@@ -24,6 +24,7 @@ public:
     void Print() const;
     void Remove(int index);
     int Number();
+    friend ostream& operator<<(ostream& stream, T d);
 };
 
 template<class T>
@@ -102,7 +103,7 @@ int LList<T>::Number() {
         n = n->pNext;
         i++;
     }
-    return i;
+    return i-1;
 }
 
 /*

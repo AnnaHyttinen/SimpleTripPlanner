@@ -3,17 +3,86 @@
 #include <string>
 using namespace std;
 
-class Plan : public LList<Day> {
+class Plan : public Day, public LList<Day> {
 private:
     string planName;
     LList<Day> days;
 public:
+    Plan() {};
     Plan(string name) : planName(name) { LList<Day> days; }
     ~Plan() { LList<Day> days; } // is this how it is destroyed?
+    void SwitchAction(const Day& d);
     void CreateDay();
-    void ListDay();
+    void ListDays();
     void GetName() { cout << "\t# " << planName << " #" << endl << endl; }
+    void RemoveDay() {
+        int answer;
+        cout << "Which day would you like to remove?\n";
+        cin.ignore();
+        cin >> answer;
+        days.Remove(answer);
+        days.Print();
+    }
+    void EditDay() {
+
+    }
+    void SeeThePlan() {
+
+    }
 };
+
+void Plan::SwitchAction(const Day& d) {
+    int answer = 0;
+    //toDo.Print();
+    cout << "Would you like to: \n1 add an activity,\n2 remove an activity,\n";
+    cout << "3 set an accommodation or\n4 nothing else for this day? Your input: ";
+    cin >> answer;
+
+    if (answer != 1 && answer != 2 && answer != 3 && answer != 4) {
+        cout << "Would you like to: \n1 add an activity,\n2 remove an activity,\n";
+        cout << "3 set an accommodation or\n4 nothing else for this day? Your input: ";
+        cin >> answer;
+    }
+    else {
+        switch (answer) {
+        case 1:
+            WhatToDo();
+            SwitchAction(d);
+            break;
+        case 2:
+            RemoveToDo();
+            SwitchAction(d);
+            break;
+        case 3:
+            SetAcco();
+            SwitchAction(d);
+            break;
+        case 4:
+            int another;
+            cout << "Well then! Would you like to..." << endl;
+            cout << "1) create a new day,\n2) remove an existing day,\n3) edit an existing day,\n";
+            cout << "4) see the plan or\n5) none of the above? Your input: ";
+            cin >> another;
+            switch (another) {
+            case 1:
+                CreateDay();
+                break;
+            case 2:
+                RemoveDay();
+                break;
+            case 3:
+                EditDay();
+                break;
+            case 4:
+                SeeThePlan();
+                break;
+            case 5:
+                break;
+            }
+            break;
+        }
+    }
+}
 
 void Plan::CreateDay() {
     string name;
@@ -24,12 +93,11 @@ void Plan::CreateDay() {
     Day day(name);
     days.Push(day);
     day.GetName();
-    day.SwitchAction();
+    SwitchAction(day);
 }
 
-void Plan::ListDay() {
+void Plan::ListDays() {
+    days.Print(); //printing an object
     cout << "You have created " << days.Number() << " days." << endl;
 }
-
-
 

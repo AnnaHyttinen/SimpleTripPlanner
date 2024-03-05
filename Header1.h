@@ -31,7 +31,6 @@ void Day::WhatToDo() {
     cout << endl << "Describe what you would like to do: ";
     cin.ignore();
     getline(cin, thing);
-
     toDo.Push(thing);
     toDo.Print();
 }

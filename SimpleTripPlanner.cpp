@@ -3,9 +3,9 @@
 #include "Header1.h"
 #include "Header2.h"
 #include <string.h>
+#include <stdlib.h>
 using namespace std;
 
-bool planner = true;
 LList<Plan> planList;
 
 void CreatePlan() {
@@ -27,9 +27,15 @@ void ListPlan() {
 
 int main()
 {
+    cout << "*** Simple Trip Planner ***" << endl << endl;
     LList<Plan> planList;
-    while (planner = true) {
-        cout << "*** Simple Trip Planner ***" << endl << endl;
+
+    int answer;
+    cout << "Type 1 to proceed or 2 to quit: ";
+    cin >> answer;
+    cin.ignore();
+    if (answer == 2) { exit(0); }
+    if (answer == 1) {
         int number = planList.Number();
         if (number == 0) {
             cout << "No previous data was found. Let's create a new plan! " << endl;
@@ -38,8 +44,16 @@ int main()
         else {
             cout << "Available plans: " << endl;
             planList.Print();
-            cout << "Choose an action: " << endl;
+            cout << "Enter the number to open a plan, 0 to make a new plan or 100 to remove a plan: ";
+            cin >> answer;
+            cin.ignore();
+            //OpenPlan()
+            //CreatePlan()
+            //RemovePlan()
         }
+    }
+    else {
+        main();
     }
     return 0;
 }

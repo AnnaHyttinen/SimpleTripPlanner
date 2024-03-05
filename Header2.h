@@ -32,16 +32,16 @@ public:
 };
 
 void Plan::SwitchAction(const Day& d) {
+    cin.ignore();
     int answer = 0;
+    d.Print();
     //toDo.Print();
     cout << "Would you like to: \n1 add an activity,\n2 remove an activity,\n";
     cout << "3 set an accommodation or\n4 nothing else for this day? Your input: ";
     cin >> answer;
 
     if (answer != 1 && answer != 2 && answer != 3 && answer != 4) {
-        cout << "Would you like to: \n1 add an activity,\n2 remove an activity,\n";
-        cout << "3 set an accommodation or\n4 nothing else for this day? Your input: ";
-        cin >> answer;
+        SwitchAction(d);
     }
     else {
         switch (answer) {
@@ -59,10 +59,12 @@ void Plan::SwitchAction(const Day& d) {
             break;
         case 4:
             int another;
+            cin.ignore();
             cout << "Well then! Would you like to..." << endl;
             cout << "1) create a new day,\n2) remove an existing day,\n3) edit an existing day,\n";
             cout << "4) see the plan or\n5) none of the above? Your input: ";
             cin >> another;
+            cin.ignore();
             switch (another) {
             case 1:
                 CreateDay();

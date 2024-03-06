@@ -27,6 +27,7 @@ ostream& operator<<(ostream& stream, Day d) {
 }
 
 void Day::WhatToDo() {
+    cout << "You have " << toDo.Number() << " items on your to-do-list." << endl;
     string thing;
     cout << endl << "Describe what you would like to do: ";
     cin.ignore();

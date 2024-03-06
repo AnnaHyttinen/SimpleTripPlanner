@@ -22,23 +22,26 @@ void CreatePlan() {
 }
 
 void ListPlan() {
-    //printing objects from inside objects etc. 
+    //printing objects from inside objects 
 }
 
 int main()
 {
     cout << "*** Simple Trip Planner ***" << endl << endl;
-    LList<Plan> planList;
+    Vector<Plan> planList;
+    //cout << "Amount of available plans: " << planList.Number() << endl;
+    
+    int answer = 0;
 
-    int answer;
     cout << "Type 1 to proceed or 2 to quit: ";
     cin >> answer;
     cin.ignore();
     if (answer == 2) { exit(0); }
+
     if (answer == 1) {
         int number = planList.Number();
         if (number == 0) {
-            cout << "No previous data was found. Let's create a new plan! " << endl;
+            cout << "Let's create a new plan! " << endl;
             CreatePlan();
         }
         else {

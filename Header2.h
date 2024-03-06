@@ -87,6 +87,7 @@ void Plan::SwitchAction(const Day& d) {
 }
 
 void Plan::CreateDay() {
+    cout << "Amount of days created: " << days.Number() << endl;
     string name;
     cout << "Type a preferred name for the day: ";
     getline(cin, name);

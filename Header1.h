@@ -39,8 +39,8 @@ void Day::WhatToDo() {
 void Day::RemoveToDo() {
     int answer;
     cout << "Which of these activities would you like to remove?\n";
-    cin.ignore();
     cin >> answer;
+    cin.ignore();
     toDo.Remove(answer);
     toDo.Print();
 }

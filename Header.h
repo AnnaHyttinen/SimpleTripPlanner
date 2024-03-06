@@ -23,8 +23,8 @@ public:
     LList<T>& Push(T content);
     void Print() const;
     void Remove(int index);
+    T& GetReference(int index);
     int Number();
-    friend ostream& operator<<(ostream& stream, T d);
 };
 
 template<class T>
@@ -95,6 +95,23 @@ void LList<T>::Remove(int index) {
 }
 
 template <class T>
+T& LList<T>::GetReference(int index) {
+    int i = 1;
+    Node* n = first;
+    Node* previous = first;
+
+    while (i < index) {
+        previous = n;
+        n = n->pNext;
+        i++;
+    }
+    if (i = index) {
+        T cont = n->content;
+        return cont;
+    }
+}
+
+template <class T>
 int LList<T>::Number() {
     int i = 1;
     Node* n;
@@ -106,6 +123,7 @@ int LList<T>::Number() {
     return i-1;
 }
 
+
 template<typename T>
 class Vector {
     T* arr;
@@ -116,6 +134,7 @@ public:
         arr = new T[1];
         capacity = 1;
         current = 0;
+        cout << "Created a Vector" << endl;
     }
     ~Vector() { delete[] arr; }
 
@@ -124,7 +143,6 @@ public:
             T* temp = new T[2 * capacity];
             for (int i = 0; i < capacity; i++) {
                 temp[i] = arr[i];
-                cout << "Pushed to a Vector! \n";
             }
             delete[] arr;
             capacity *= 2;
@@ -136,7 +154,7 @@ public:
 
     void Print() {
         for (int i = 0; i < current; i++) {
-            cout << arr[i] << "_";
+            cout << arr[i] << " ";
         }
     }
 

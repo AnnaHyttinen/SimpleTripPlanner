@@ -9,25 +9,32 @@ private:
     LList<Day> days;
 public:
     Plan() {};
-    Plan(string name) : planName(name) { LList<Day> days; }
-    ~Plan() { LList<Day> days; } // is this how it is destroyed?
+    Plan(string name) : planName(name) {}
+    ~Plan() {};
     void SwitchAction(const Day& d);
     void CreateDay();
     void ListDays();
     void GetName() { cout << "\t# " << planName << " #" << endl << endl; }
     void RemoveDay() {
         int answer;
-        cout << "Which day would you like to remove?\n";
-        cin.ignore();
-        cin >> answer;
-        days.Remove(answer);
         days.Print();
+        cout << "Which day would you like to remove?\n";
+        cin >> answer;
+        cin.ignore();
+        days.Remove(answer);
+        EditDay();
     }
     void EditDay() {
-
+        int answer;
+        days.Print();
+        cout << "Which day would you like to edit?" << endl;
+        cin >> answer;
+        cin.ignore();
+        Day d = days.GetReference(answer); //should the old one be replaced with this?
+        SwitchAction(d);
     }
     void SeeThePlan() {
-
+        //printing objects inside the objects
     }
 };
 

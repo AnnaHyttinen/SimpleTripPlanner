@@ -17,7 +17,7 @@ void CreatePlan() {
     Plan plan(n);
     planList.Push(plan);
     plan.GetName();
-    plan.ListDays();
+    //plan.ListDays();
     plan.CreateDay();
 }
 
@@ -29,34 +29,25 @@ int main()
 {
     cout << "*** Simple Trip Planner ***" << endl << endl;
     Vector<Plan> planList;
-    //cout << "Amount of available plans: " << planList.Number() << endl;
-    
-    int answer = 0;
-
-    cout << "Type 1 to proceed or 2 to quit: ";
-    cin >> answer;
-    cin.ignore();
-    if (answer == 2) { exit(0); }
-
-    if (answer == 1) {
-        int number = planList.Number();
-        if (number == 0) {
-            cout << "Let's create a new plan! " << endl;
-            CreatePlan();
-        }
-        else {
-            cout << "Available plans: " << endl;
-            planList.Print();
-            cout << "Enter the number to open a plan, 0 to make a new plan or 100 to remove a plan: ";
-            cin >> answer;
-            cin.ignore();
-            //OpenPlan()
-            //CreatePlan()
-            //RemovePlan()
-        }
+    int number = planList.Number();
+    if (number == 0) {
+        cout << "Let's create a new plan! " << endl;
+        CreatePlan();
     }
     else {
-        main();
+        int answer = 0;
+        cout << "Type 1 to proceed or 2 to quit: ";
+        cin >> answer;
+        cin.ignore();
+        if (answer == 2) { exit(0); }
+        cout << "Available plans: " << endl;
+        planList.Print();
+        cout << "Enter the number to open a plan, 0 to make a new plan or 100 to remove a plan: ";
+        cin >> answer;
+        cin.ignore();
+        //OpenPlan()
+        //CreatePlan()
+        //RemovePlan()
     }
     return 0;
 }

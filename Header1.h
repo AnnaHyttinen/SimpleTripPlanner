@@ -16,6 +16,7 @@ public:
     }
     void WhatToDo();
     void RemoveToDo();
+    void GetAcco();
     void SetAcco();
     void GetName() { cout << "\t\"" << dayName << "\"" << endl; }
     friend ostream& operator<<(ostream& stream, Day d);
@@ -27,7 +28,7 @@ ostream& operator<<(ostream& stream, Day d) {
 }
 
 void Day::WhatToDo() {
-    cout << "You have " << toDo.Number() << " items on your to-do-list." << endl;
+    toDo.Print();
     string thing;
     cout << endl << "Describe what you would like to do: ";
     cin.ignore();
@@ -37,16 +38,24 @@ void Day::WhatToDo() {
 }
 
 void Day::RemoveToDo() {
-    int answer;
-    cout << "Which of these activities would you like to remove?\n";
-    cin >> answer;
-    cin.ignore();
-    toDo.Remove(answer);
-    toDo.Print();
+    if (toDo.Number() == 0) { cout << "No activities to remove. " << endl; }
+    else {
+        int answer;
+        cout << "Which of these activities would you like to remove?\n";
+        cin >> answer;
+        cin.ignore();
+        toDo.Remove(answer);
+        toDo.Print();
+    }
+}
+
+void Day::GetAcco() {
+    if (accommodation == "") { cout << "Current accommodation: None" << endl << endl; }
+    else{ cout << "Current accommodation: " << accommodation << endl << endl; }
 }
 
 void Day::SetAcco() {
-    cout << "Type your idea for an accommodation for " << dayName << ": \n";
+    cout << "Set an accommodation: \n";
     cin.ignore();
     getline(cin, accommodation);
 }

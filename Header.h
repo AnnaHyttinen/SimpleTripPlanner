@@ -134,7 +134,6 @@ public:
         arr = new T[1];
         capacity = 1;
         current = 0;
-        cout << "Created a Vector" << endl;
     }
     ~Vector() { delete[] arr; }
 

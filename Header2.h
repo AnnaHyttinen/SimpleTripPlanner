@@ -30,11 +30,12 @@ public:
         cout << "Which day would you like to edit?" << endl;
         cin >> answer;
         cin.ignore();
-        Day d = days.GetReference(answer); //should the old one be replaced with this?
+        Day d = days.GetReference(answer);
+        //how is previous day replaced?
         SwitchAction(d);
     }
     void SeeThePlan() {
-        //printing objects inside the objects
+        days.Print();
     }
 };
 

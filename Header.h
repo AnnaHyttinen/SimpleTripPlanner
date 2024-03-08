@@ -23,7 +23,7 @@ public:
     LList<T>& Push(T content);
     void Print() const;
     void Remove(int index);
-    T& GetReference(int index);
+    const T& GetReference(int index) const;
     int Number();
 };
 
@@ -95,7 +95,7 @@ void LList<T>::Remove(int index) {
 }
 
 template <class T>
-T& LList<T>::GetReference(int index) {
+const T& LList<T>::GetReference(int index) const {
     int i = 1;
     Node* n = first;
     Node* previous = first;

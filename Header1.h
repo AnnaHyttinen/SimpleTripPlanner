@@ -5,15 +5,25 @@ using namespace std;
 
 class Day : public LList<string> {
 private:
-    string dayName{};
-    string accommodation{};
+    string dayName;
+    string accommodation;
     LList<string> toDo;
 public:
-    Day() {};
-    Day(string name) : dayName(name) {}
-    ~Day() {
-         LList<string> toDo; // ?
+    Day() {
+        dayName = "";
+        accommodation = "";
+        LList<string> toDo;
+    };
+    Day(string name) : dayName(name) {
+        accommodation = "";
+        LList<string> toDo;
     }
+    Day(const Day& other) {
+        dayName = other.dayName;
+        accommodation = other.accommodation;
+        toDo = other.toDo;
+    }
+    ~Day() {}
     void WhatToDo();
     void RemoveToDo();
     void GetAcco();
@@ -29,6 +39,7 @@ ostream& operator<<(ostream& stream, Day d) {
 
 void Day::WhatToDo() {
     toDo.Print();
+    cout << "To do -list exist in address " << &toDo << endl;
     string thing;
     cout << endl << "Describe what you would like to do: ";
     cin.ignore();

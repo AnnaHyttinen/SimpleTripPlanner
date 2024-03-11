@@ -3,7 +3,9 @@
 #include <string>
 using namespace std;
 
-class Plan : public Day, public LList<Day> {
+extern void Menu();
+
+class Plan : public LList<Day> {
 private:
     string planName;
     LList<Day> days;
@@ -11,7 +13,7 @@ public:
     Plan() {};
     Plan(string name) : planName(name) {}
     ~Plan() {};
-    void SwitchAction(const Day& d);
+    void SwitchAction(Day& d);
     void CreateDay();
     void ListDays();
     void GetName() { cout << "\t# " << planName << " #" << endl << endl; }
@@ -37,13 +39,17 @@ public:
     void SeeThePlan() {
         days.Print();
     }
+    ostream& operator<<(ostream& stream) {
+        stream << this->planName;
+        return stream;
+    }
 };
 
-void Plan::SwitchAction(const Day& d) {
+void Plan::SwitchAction(Day& d) {
     cin.ignore();
     int answer = 0;
     d.Print();
-    GetAcco();
+    d.GetAcco();
     cout << "Would you like to: \n1 add an activity,\n2 remove an activity,\n";
     cout << "3 set an accommodation or\n4 nothing else for this day? Your input: ";
     cin >> answer;
@@ -54,15 +60,15 @@ void Plan::SwitchAction(const Day& d) {
     else {
         switch (answer) {
         case 1:
-            WhatToDo();
+            d.WhatToDo();
             SwitchAction(d);
             break;
         case 2:
-            RemoveToDo();
+            d.RemoveToDo();
             SwitchAction(d);
             break;
         case 3:
-            SetAcco();
+            d.SetAcco();
             SwitchAction(d);
             break;
         case 4:
@@ -87,6 +93,7 @@ void Plan::SwitchAction(const Day& d) {
                 SeeThePlan();
                 break;
             case 5:
+                Menu();
                 break;
             }
             break;

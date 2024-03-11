@@ -22,7 +22,38 @@ void CreatePlan() {
 }
 
 void ListPlan() {
+    cout << "Available plans:\n";
     //printing objects from inside objects 
+}
+
+void ChangePlan() {
+    int answer = 0;
+    cout << "Type 1 to proceed or 2 to quit: ";
+    cin >> answer;
+    cin.ignore();
+    if (answer == 2) { exit(0); }
+    cout << "Available plans: " << endl;
+    //planList.Print();
+    cout << "Enter the number to open a plan, 0 to make a new plan or 100 to remove a plan: ";
+    cin >> answer;
+    cin.ignore();
+    //OpenPlan()
+    //CreatePlan()
+    //RemovePlan()
+}
+
+void Menu() {
+    int answer;
+    cout << "1) Choose a plan 2) Quit\nYour input: ";
+    cin >> answer;
+    cin.ignore();
+    switch (answer) {
+    case 1:
+        ListPlan();
+        break;
+    case 2:
+        break;
+    }
 }
 
 int main()
@@ -35,25 +66,7 @@ int main()
         CreatePlan();
     }
     else {
-        int answer = 0;
-        cout << "Type 1 to proceed or 2 to quit: ";
-        cin >> answer;
-        cin.ignore();
-        if (answer == 2) { exit(0); }
-        cout << "Available plans: " << endl;
-        planList.Print();
-        cout << "Enter the number to open a plan, 0 to make a new plan or 100 to remove a plan: ";
-        cin >> answer;
-        cin.ignore();
-        //OpenPlan()
-        //CreatePlan()
-        //RemovePlan()
+        ChangePlan();
     }
     return 0;
 }
-
-
-
-
-
-

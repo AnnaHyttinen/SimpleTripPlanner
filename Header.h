@@ -123,8 +123,7 @@ int LList<T>::Number() {
     return i-1;
 }
 
-
-template<typename T>
+template<class T>
 class Vector {
     T* arr;
     int capacity;
@@ -150,13 +149,13 @@ public:
         arr[current] = data;
         current++;
     }
-
+    
     void Print() {
         for (int i = 0; i < current; i++) {
-            cout << arr[i] << " ";
+            cout << i + 1 << ") " << arr[i] << endl;
         }
     }
-
+    
     int Number() {
         int c = 0;
         for (int i = 0; i < current; i++) {
@@ -165,3 +164,5 @@ public:
         return c;
     }
 };
+
+

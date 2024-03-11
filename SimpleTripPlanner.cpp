@@ -23,6 +23,7 @@ void CreatePlan() {
 
 void OpenPlan(const Plan& p) {
     //cout << p << " includes:\n";
+    //for each: SeePlan();
 }
 
 void ChangePlan() {

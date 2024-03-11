@@ -24,27 +24,24 @@ public:
         cin >> answer;
         cin.ignore();
         days.Remove(answer);
-        EditDay();
+        SeePlan();
     }
-    void EditDay() {
-        cout << "Will do another time. " << endl;
-        /*
-        int answer;
+    void ReplaceDay() {
+        int a;
         days.Print();
-        cout << "Which day would you like to edit?" << endl;
-        cin >> answer;
+        cout << "Which day would you like to replace?" << endl;
+        cin >> a;
         cin.ignore();
-        Day d = days.GetReference(answer);
-        //how is previous day replaced?
+        Day d = days.GetReference(a);
         SwitchAction(d);
-        */
     }
-    void SeeThePlan() {
+    void SeePlan() {
         days.Print();
     }
 };
 
 void Plan::SwitchAction(Day& d) {
+    d.GetName();
     cin.ignore();
     int answer = 0;
     d.Print();
@@ -74,7 +71,7 @@ void Plan::SwitchAction(Day& d) {
             int another;
             cin.ignore();
             cout << endl;
-            cout << "1) create a new day,\n2) remove an existing day,\n3) edit an existing day,\n";
+            cout << "1) create a new day,\n2) remove an existing day,\n3) replace an existing day,\n";
             cout << "4) see the plan or\n5) none of the above? Your input: ";
             cin >> another;
             cin.ignore();
@@ -84,12 +81,15 @@ void Plan::SwitchAction(Day& d) {
                 break;
             case 2:
                 RemoveDay();
+                SwitchAction(d);
                 break;
             case 3:
-                EditDay();
+                ReplaceDay();
+                SwitchAction(d);
                 break;
             case 4:
-                SeeThePlan();
+                SeePlan();
+                SwitchAction(d);
                 break;
             case 5:
                 ChangePlan();

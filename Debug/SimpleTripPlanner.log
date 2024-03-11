@@ -1,2 +1,3 @@
 ﻿  SimpleTripPlanner.cpp
+D:\Unityhommeleita\CppMaterials\Second Courses\SimpleTripPlanner\Header.h(113): warning C4715: 'LList<Day>::GetReference': not all control paths return a value
   SimpleTripPlanner.vcxproj -> D:\Unityhommeleita\CppMaterials\Second Courses\SimpleTripPlanner\Debug\SimpleTripPlanner.exe

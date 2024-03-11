@@ -109,7 +109,6 @@ void Plan::CreateDay() {
 
     Day day(name);
     days.Push(day);
-    day.GetName();
     SwitchAction(day);
 }
 

@@ -6,7 +6,7 @@
 #include <stdlib.h>
 using namespace std;
 
-LList<Plan> planList;
+Vector<Plan> planList;
 
 void CreatePlan() {
     string n;
@@ -17,42 +17,15 @@ void CreatePlan() {
     Plan plan(n);
     planList.Push(plan);
     plan.GetName();
-    //plan.ListDays();
     plan.CreateDay();
-}
-
-void OpenPlan(const Plan& p) {
-    //cout << p << " includes:\n";
-    //for each: SeePlan();
-}
-
-void ChangePlan() {
-    int answer = 0;
-    cout << "\nType 1 to proceed or 2 to quit: ";
-    cin >> answer;
-    cin.ignore();
-    if (answer == 2) { exit(0); }
-    cout << "Available plans: " << endl;
-    //planList.Print();
-    cout << "Enter the number to open a plan, 0 to make a new plan or 100 to remove a plan: ";
-    cin >> answer;
-    cin.ignore();
-    //OpenPlan()
-    //CreatePlan()
-    //RemovePlan()
 }
 
 int main()
 {
     cout << "*** Simple Trip Planner ***" << endl << endl;
-    Vector<Plan> planList;
-    int number = planList.Number();
-    if (number == 0) {
-        cout << "Let's create a new plan! " << endl << endl;
-        CreatePlan();
-    }
-    else {
-        ChangePlan();
-    }
+
+    cout << "Let's create a plan! ";
+    CreatePlan();
+    
     return 0;
 }

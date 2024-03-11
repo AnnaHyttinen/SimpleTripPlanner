@@ -21,14 +21,13 @@ void CreatePlan() {
     plan.CreateDay();
 }
 
-void ListPlan() {
-    cout << "Available plans:\n";
-    //printing objects from inside objects 
+void OpenPlan(const Plan& p) {
+    //cout << p << " includes:\n";
 }
 
 void ChangePlan() {
     int answer = 0;
-    cout << "Type 1 to proceed or 2 to quit: ";
+    cout << "\nType 1 to proceed or 2 to quit: ";
     cin >> answer;
     cin.ignore();
     if (answer == 2) { exit(0); }
@@ -42,27 +41,13 @@ void ChangePlan() {
     //RemovePlan()
 }
 
-void Menu() {
-    int answer;
-    cout << "1) Choose a plan 2) Quit\nYour input: ";
-    cin >> answer;
-    cin.ignore();
-    switch (answer) {
-    case 1:
-        ListPlan();
-        break;
-    case 2:
-        break;
-    }
-}
-
 int main()
 {
     cout << "*** Simple Trip Planner ***" << endl << endl;
     Vector<Plan> planList;
     int number = planList.Number();
     if (number == 0) {
-        cout << "Let's create a new plan! " << endl;
+        cout << "Let's create a new plan! " << endl << endl;
         CreatePlan();
     }
     else {

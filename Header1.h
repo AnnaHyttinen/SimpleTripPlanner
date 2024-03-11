@@ -18,11 +18,7 @@ public:
         accommodation = "";
         LList<string> toDo;
     }
-    Day(const Day& other) {
-        dayName = other.dayName;
-        accommodation = other.accommodation;
-        toDo = other.toDo;
-    }
+    //Day(const Day& other) = delete;
     ~Day() {}
     void WhatToDo();
     void RemoveToDo();
@@ -39,9 +35,8 @@ ostream& operator<<(ostream& stream, Day d) {
 
 void Day::WhatToDo() {
     toDo.Print();
-    cout << "To do -list exist in address " << &toDo << endl;
     string thing;
-    cout << endl << "Describe what you would like to do: ";
+    cout << "Describe what you would like to do: ";
     cin.ignore();
     getline(cin, thing);
     toDo.Push(thing);

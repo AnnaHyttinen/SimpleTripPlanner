@@ -68,6 +68,7 @@ void LList<T>::Print() const {
         n = n->pNext;
         i++;
     }
+    cout << endl;
 }
 
 template <class T>

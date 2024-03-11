@@ -3,7 +3,7 @@
 #include <string>
 using namespace std;
 
-extern void Menu();
+extern void ChangePlan();
 
 class Plan : public LList<Day> {
 private:
@@ -27,6 +27,8 @@ public:
         EditDay();
     }
     void EditDay() {
+        cout << "Will do another time. " << endl;
+        /*
         int answer;
         days.Print();
         cout << "Which day would you like to edit?" << endl;
@@ -35,13 +37,10 @@ public:
         Day d = days.GetReference(answer);
         //how is previous day replaced?
         SwitchAction(d);
+        */
     }
     void SeeThePlan() {
         days.Print();
-    }
-    ostream& operator<<(ostream& stream) {
-        stream << this->planName;
-        return stream;
     }
 };
 
@@ -93,7 +92,7 @@ void Plan::SwitchAction(Day& d) {
                 SeeThePlan();
                 break;
             case 5:
-                Menu();
+                ChangePlan();
                 break;
             }
             break;
@@ -102,7 +101,7 @@ void Plan::SwitchAction(Day& d) {
 }
 
 void Plan::CreateDay() {
-    cout << "Amount of days created: " << days.Number() << endl;
+    cout << "Amount of days in this plan: " << days.Number() << endl << endl;
     string name;
     cout << "Type a preferred name for the day: ";
     getline(cin, name);

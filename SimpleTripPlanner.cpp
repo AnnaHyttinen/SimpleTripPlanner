@@ -24,8 +24,7 @@ int main()
 {
     cout << "*** Simple Trip Planner ***" << endl << endl;
 
-    cout << "Let's create a plan! ";
     CreatePlan();
-    
+
     return 0;
 }

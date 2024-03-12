@@ -25,6 +25,7 @@ public:
     void GetAcco();
     void SetAcco();
     void GetName() { cout << "\t\"" << dayName << "\"" << endl; }
+    void PrintDay();
     friend ostream& operator<<(ostream& stream, Day d);
 };
 
@@ -65,4 +66,12 @@ void Day::SetAcco() {
     cin.ignore();
     getline(cin, accommodation);
 }
+
+void Day::PrintDay() {
+    cout << dayName << endl;
+    toDo.Print(); //this is not coming out
+    cout << endl << accommodation << endl;
+}
+
+
 

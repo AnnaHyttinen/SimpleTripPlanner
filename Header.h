@@ -164,6 +164,24 @@ public:
         }
         return c;
     }
+
+    void Remove(int index) {
+        index -= 1;
+        Vector v2;
+        int curr = 0;
+        for (int i = 0; i < index; i++) {
+            v2.arr[i] = arr[i];
+            curr++;
+        }
+        if (curr == index) { curr++; }
+        else { 
+            v2.arr[curr-1] = arr[curr]; 
+            curr++;
+        }
+        v2.current = current - 1;
+        delete[] arr;
+        arr = v2.arr;
+    }
 };
 
 

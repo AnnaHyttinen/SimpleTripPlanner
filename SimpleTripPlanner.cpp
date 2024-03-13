@@ -6,7 +6,11 @@
 #include <stdlib.h>
 using namespace std;
 
-Vector<Plan> planList;
+Vector<string> planList;
+
+void PrintPlan() {
+    planList.Print();
+}
 
 void CreatePlan() {
     string n;
@@ -15,7 +19,6 @@ void CreatePlan() {
     cin.ignore();
 
     Plan plan(n);
-    planList.Push(plan);
     plan.GetName();
     plan.CreateDay();
 }

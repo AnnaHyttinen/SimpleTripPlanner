@@ -3,6 +3,8 @@
 #include <string>
 using namespace std;
 
+extern Vector<string> planList;
+
 class Day : public LList<string> {
 private:
     string dayName;
@@ -15,22 +17,21 @@ public:
         LList<string> toDo;
     };
     Day(string name) : dayName(name) {
+        planList.Push(name);
         accommodation = "";
         LList<string> toDo;
     }
-    //Day(const Day& other) = delete;
     ~Day() {}
     void WhatToDo();
     void RemoveToDo();
     void GetAcco();
     void SetAcco();
     void GetName() { cout << "\t\"" << dayName << "\"" << endl; }
-    void PrintDay();
     friend ostream& operator<<(ostream& stream, Day d);
 };
 
 ostream& operator<<(ostream& stream, Day d) {
-    stream << d.dayName << endl;
+    stream << d.dayName;
     return stream;
 }
 
@@ -41,6 +42,7 @@ void Day::WhatToDo() {
     cin.ignore();
     getline(cin, thing);
     toDo.Push(thing);
+    planList.Push(thing);
     toDo.Print();
 }
 
@@ -52,6 +54,7 @@ void Day::RemoveToDo() {
         cin >> answer;
         cin.ignore();
         toDo.Remove(answer);
+        planList.Remove(answer);
         toDo.Print();
     }
 }
@@ -65,12 +68,7 @@ void Day::SetAcco() {
     cout << "Set an accommodation: \n";
     cin.ignore();
     getline(cin, accommodation);
-}
-
-void Day::PrintDay() {
-    cout << dayName << endl;
-    toDo.Print(); //this is not coming out
-    cout << endl << accommodation << endl;
+    planList.Push(accommodation);
 }
 
 

@@ -3,6 +3,8 @@
 #include <string>
 using namespace std;
 
+extern void PrintPlan();
+
 class Plan : public LList<Day> {
 private:
     string planName;
@@ -30,11 +32,8 @@ public:
         cout << "Which day would you like to replace?" << endl;
         cin >> a;
         cin.ignore();
-        Day d = days.GetReference(a);
-        SwitchAction(d);
-    }
-    void SeePlan(Day& d) {
-        d.PrintDay();
+        Day da = days.GetReference(a);
+        SwitchAction(da);
     }
 };
 
@@ -86,10 +85,8 @@ void Plan::SwitchAction(Day& d) {
                 SwitchAction(d);
                 break;
             case 4:
-                for (int i = 0; i <= days.Number(); i++) {
-                    Day temp = days.GetReference(i);
-                    SeePlan(temp);
-                }
+                PrintPlan();
+                cout << "->->-> End of the plan. Now returning to the day:";
                 SwitchAction(d);
                 break;
             case 5:

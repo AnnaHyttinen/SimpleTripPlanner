@@ -27,7 +27,6 @@ public:
     }
     ~Day() {}
     void WhatToDo();
-    //void RemoveToDo();
     void GetAcco();
     void SetAcco();
     void SetMoney(int m);
@@ -52,36 +51,23 @@ void Day::WhatToDo() {
     planList.Push(better);
     toDo.Print();
 }
-/*
-void Day::RemoveToDo() {
-    if (toDo.Number() == 0) { cout << "No activities to remove. " << endl; }
-    else {
-        int answer;
-        cout << "Which of these activities would you like to remove?\n";
-        cin >> answer;
-        cin.ignore();
-        toDo.Remove(answer);
-        planList.Remove(answer);
-        toDo.Print();
-    }
-}
-*/
+
 void Day::GetAcco() {
     if (accommodation == "") { cout << "Current accommodation: None" << endl << endl; }
     else{ cout << "Current accommodation: " << accommodation << endl << endl; }
 }
 
 void Day::SetAcco() {
-    cout << "Set an accommodation: \n";
+    cout << "\nType an accommodation: ";
     cin.ignore();
     getline(cin, accommodation);
-    string a = "*** " + accommodation + " ***";
+    string a = "\t\t*** " + accommodation + " ***";
     planList.Push(a);
 }
 
 void Day::SetMoney(int m) {
     money += m;
     budget += m;
-    planList.Push("Daily cost: " + to_string(m) + "\n");
+    planList.Push("\nDaily cost: " + to_string(m) + "\n");
 }
 

@@ -15,7 +15,7 @@ void PrintPlan() {
 
 void CreatePlan() {
     string e;
-    cout << "Press y if you want to include money to the plan. ";
+    cout << "Press y to include money to the plan. ";
     getline(cin, e);
     cin.ignore();
     if (e == "y") cost = true;

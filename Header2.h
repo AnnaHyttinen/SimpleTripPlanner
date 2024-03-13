@@ -19,24 +19,6 @@ public:
     void CreateDay();
     void ListDays();
     void GetName() { cout << "\t# " << planName << " #" << endl << endl; }
-    /*void RemoveDay() {
-        int answer;
-        days.Print();
-        cout << "Which day would you like to remove?\n";
-        cin >> answer;
-        cin.ignore();
-        days.Remove(answer);
-        days.Print();
-    }
-    void ReplaceDay() {
-        int a;
-        days.Print();
-        cout << "Which day would you like to replace?" << endl;
-        cin >> a;
-        cin.ignore();
-        Day da = days.GetReference(a);
-        SwitchAction(da);
-    }*/
 };
 
 void Plan::SwitchAction(Day& d) {
@@ -45,11 +27,10 @@ void Plan::SwitchAction(Day& d) {
     int answer = 0;
     d.Print();
     d.GetAcco();
-    cout << "Would you like to: \n1 add an activity,\n2 remove an activity,\n";
-    cout << "3 set an accommodation or\n4 no more activities for the day? Your input: ";
+    cout << "Would you like to: \n1 add an activity,\n2 set an accommodation or\n3 no more activities for the day? Your input: ";
     cin >> answer;
 
-    if (answer != 1 && answer != 2 && answer != 3 && answer != 4) {
+    if (answer != 1 && answer != 2 && answer != 3) {
         SwitchAction(d);
     }
     else {
@@ -59,14 +40,10 @@ void Plan::SwitchAction(Day& d) {
             SwitchAction(d);
             break;
         case 2:
-            //d.RemoveToDo();
-            SwitchAction(d);
-            break;
-        case 3:
             d.SetAcco();
             SwitchAction(d);
             break;
-        case 4:
+        case 3:
             if (cost == true) {
                 int cash;
                 cout << "Add estimated expenses for the day: ";
@@ -76,9 +53,8 @@ void Plan::SwitchAction(Day& d) {
             }
             int another;
             cin.ignore();
-            cout << endl;
-            cout << "1) create a new day,\n2) remove an existing day,\n3) replace an existing day,\n";
-            cout << "4) see the plan or\n5) quit? Your input: ";
+            cout << endl << "Select: " << endl;
+            cout << "1) to create a new day, \n2) to see the plan or \n3) to quit? Your input: ";
             cin >> another;
             cin.ignore();
             switch (another) {
@@ -86,21 +62,13 @@ void Plan::SwitchAction(Day& d) {
                 CreateDay();
                 break;
             case 2:
-                //RemoveDay();
-                SwitchAction(d);
-                break;
-            case 3:
-                //ReplaceDay();
-                SwitchAction(d);
-                break;
-            case 4:
                 cout << endl;
                 PrintPlan();
                 cout << "Overall budget: " << budget << endl;
                 cout << "->->-> End of the plan. Now returning to the day:";
                 SwitchAction(d);
                 break;
-            case 5:
+            case 3:
                 break;
             }
             break;

@@ -42,7 +42,9 @@ void Day::WhatToDo() {
     cin.ignore();
     getline(cin, thing);
     toDo.Push(thing);
-    planList.Push(thing);
+    string extra = "\t";
+    string better = extra + thing;
+    planList.Push(better);
     toDo.Print();
 }
 
@@ -68,7 +70,8 @@ void Day::SetAcco() {
     cout << "Set an accommodation: \n";
     cin.ignore();
     getline(cin, accommodation);
-    planList.Push(accommodation);
+    string a = "*** " + accommodation + " ***\n";
+    planList.Push(a);
 }
 
 

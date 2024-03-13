@@ -85,6 +85,7 @@ void Plan::SwitchAction(Day& d) {
                 SwitchAction(d);
                 break;
             case 4:
+                cout << endl;
                 PrintPlan();
                 cout << "->->-> End of the plan. Now returning to the day:";
                 SwitchAction(d);

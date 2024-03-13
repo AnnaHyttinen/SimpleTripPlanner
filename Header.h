@@ -153,7 +153,7 @@ public:
     
     void Print() {
         for (int i = 0; i < current; i++) {
-            cout << i + 1 << ") " << arr[i] << endl;
+            cout << arr[i] << endl;
         }
     }
     

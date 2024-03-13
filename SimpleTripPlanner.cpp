@@ -7,12 +7,20 @@
 using namespace std;
 
 Vector<string> planList;
+bool cost;
 
 void PrintPlan() {
     planList.Print();
 }
 
 void CreatePlan() {
+    string e;
+    cout << "Press y if you want to include money to the plan. ";
+    getline(cin, e);
+    cin.ignore();
+    if (e == "y") cost = true;
+    else cost = false;
+
     string n;
     cout << "Give a name for your plan: ";
     getline(cin, n);

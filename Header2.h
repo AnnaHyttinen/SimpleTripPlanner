@@ -70,7 +70,7 @@ void Plan::SwitchAction(Day& d) {
                 SwitchAction(d);
                 break;
             case 3:
-                planList.Push(to_string(budget));
+                planList.Push("Overall budget: " + to_string(budget));
                 cout << "Saving to an external file..." << endl;
                 ofstream File(planName + ".txt");
                 string s = planList.PrintString();

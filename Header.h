@@ -156,6 +156,15 @@ public:
             cout << arr[i] << endl;
         }
     }
+
+    string PrintString() {
+        string str;
+        for (int i = 0; i < current; i++) {
+            str += arr[i];
+            str += "\n";
+        }
+        return str;
+    }
     
     int Number() {
         int c = 0;

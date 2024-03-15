@@ -28,6 +28,7 @@ void CreatePlan() {
 
     Plan plan(n);
     plan.GetName();
+    planList.Push("\t" + n + "\n");
     plan.CreateDay();
 }
 

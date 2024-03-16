@@ -68,12 +68,16 @@ void Plan::SwitchAction(Day& d) {
             case 2:
                 cout << endl;
                 PrintPlan();
-                cout << "Overall budget: " << budget << endl;
-                cout << "->->-> End of the plan. Now returning to the day:";
+                if (cost == true) {
+                    cout << "Overall budget: " << budget << endl;
+                    cout << "->->-> End of the plan. Now returning to the day:";
+                }
                 SwitchAction(d);
                 break;
             case 3:
-                planList.Push("Overall budget: " + to_string(budget));
+                if (cost == true) {
+                    planList.Push("Overall budget: " + to_string(budget));
+                }
                 cout << "Saving to an external file..." << endl;
                 ofstream File(planName + ".txt");
                 string s = planList.PrintString();

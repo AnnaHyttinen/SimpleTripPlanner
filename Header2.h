@@ -58,6 +58,9 @@ void Plan::SwitchAction(Day& d) {
             cout << "1) to create a new day, \n2) to see the plan or \n3) to quit? Your input: ";
             cin >> another;
             cin.ignore();
+            if (another != 1 && another != 2 && another != 3) {
+                SwitchAction(d);
+            }
             switch (another) {
             case 1:
                 CreateDay();
